@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+/*jshint esversion: 8 */
 const Schema = mongoose.Schema;
 
 const reviews = new Schema({
