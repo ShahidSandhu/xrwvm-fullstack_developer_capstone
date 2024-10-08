@@ -1,11 +1,7 @@
 from .models import CarMake, CarModel
 
 
-def initiate(): 
-    print("Populate not implemented. Add data manually")
-
-
-def initiate(): 
+def initiate():
     car_make_data = [
         {"name": "NISSAN", "description": "Great cars. Japanese technology"},
         {"name": "Mercedes", "description": "Great cars. German technology"},
@@ -17,7 +13,7 @@ def initiate():
     car_make_instances = []
     for data in car_make_data: 
         car_make_instances.append(CarMake.objects.create(name=data['name'], \
-        description=data['description']))
+            description=data['description']))
 
     # Create CarModel instances with the corresponding CarMake instances
     car_model_data = [
