@@ -30,7 +30,7 @@ try {
     return Reviews.insertMany(reviews_data.reviews);
   });
   Dealerships.deleteMany({}).then(() => {
-    return Dealerships.insertMany(dealerships_data.dealerships); // Corrected the typo
+    return Dealerships.insertMany(dealerships_data.dealerships);
   });
 } catch (error) {
   console.error('Error inserting initial data:', error);
@@ -46,11 +46,11 @@ app.get('/fetchReviews', async (req, res) => {
   try {
     const documents = await Reviews.find();
     res.json(documents);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
@@ -59,11 +59,11 @@ app.get('/fetchReviews/dealer/:id', async (req, res) => {
   try {
     const documents = await Reviews.find({ dealership: req.params.id });
     res.json(documents);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
@@ -72,11 +72,11 @@ app.get('/fetchDealers', async (req, res) => {
   try {
     const documents = await Dealerships.find();
     res.json(documents);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
@@ -85,11 +85,11 @@ app.get('/fetchDealers/:state', async (req, res) => {
   try {
     const documents = await Dealerships.find({ state: req.params.state });
     res.json(documents);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
@@ -98,11 +98,11 @@ app.get('/fetchDealer/:id', async (req, res) => {
   try {
     const documents = await Dealerships.find({ id: req.params.id });
     res.json(documents);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
@@ -128,11 +128,11 @@ app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
 
     const savedReview = await review.save();
     res.json(savedReview);
-    return; // Ensure no further code execution after response
+    return;
   } catch (error) {
     console.error('Error inserting review:', error);
     res.status(500).json({ error: 'Error inserting review' });
-    return; // Ensure no further code execution after response
+    return;
   }
 });
 
