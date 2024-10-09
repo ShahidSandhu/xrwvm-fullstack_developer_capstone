@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 /* jshint esversion: 8 */
-const mongoose = require('mongoose');
-const fs = require('fs');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
+const fs = require("fs");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3030;
 
@@ -14,16 +14,16 @@ let reviews_data;
 let dealerships_data;
 
 try {
-  reviews_data = JSON.parse(fs.readFileSync("reviews.json", 'utf8'));
-  dealerships_data = JSON.parse(fs.readFileSync("dealerships.json", 'utf8'));
+  reviews_data = JSON.parse(fs.readFileSync("reviews.json", "utf8"));
+  dealerships_data = JSON.parse(fs.readFileSync("dealerships.json", "utf8"));
 } catch (error) {
-  console.error('Error reading JSON files:', error);
+  console.error("Error reading JSON files:", error);
 }
 
-mongoose.connect("mongodb://mongo_db:27017/", { 'dbName': 'dealershipsDB' });
+mongoose.connect("mongodb://mongo_db:27017/", { "dbName": "dealershipsDB" });
 
-const Reviews = require('./review');
-const Dealerships = require('./dealership');
+const Reviews = require("./review");
+const Dealerships = require("./dealership");
 
 try {
   Reviews.deleteMany({}).then(() => {
@@ -33,81 +33,81 @@ try {
     return Dealerships.insertMany(dealerships_data.dealerships);
   });
 } catch (error) {
-  console.error('Error inserting initial data:', error);
+  console.error("Error inserting initial data:", error);
 }
 
 // Express route to home
-app.get('/', (req, res) => {
-  res.send('Welcome to the Mongoose API');
+app.get("/", (req, res) => {
+  res.send("Welcome to the Mongoose API");
 });
 
 // Express route to fetch all reviews
-app.get('/fetchReviews', async (req, res) => {
+app.get("/fetchReviews", async (req, res) => {
   try {
     const documents = await Reviews.find();
     res.json(documents);
     return;
   } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Error fetching documents' });
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Error fetching documents" });
     return;
   }
 });
 
 // Express route to fetch reviews by a particular dealer
-app.get('/fetchReviews/dealer/:id', async (req, res) => {
+app.get("/fetchReviews/dealer/:id", async (req, res) => {
   try {
     const documents = await Reviews.find({ dealership: req.params.id });
     res.json(documents);
     return;
   } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Error fetching documents' });
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Error fetching documents" });
     return;
   }
 });
 
 // Express route to fetch all dealerships
-app.get('/fetchDealers', async (req, res) => {
+app.get("/fetchDealers", async (req, res) => {
   try {
     const documents = await Dealerships.find();
     res.json(documents);
     return;
   } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Error fetching documents' });
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Error fetching documents" });
     return;
   }
 });
 
 // Express route to fetch Dealers by a particular state
-app.get('/fetchDealers/:state', async (req, res) => {
+app.get("/fetchDealers/:state", async (req, res) => {
   try {
     const documents = await Dealerships.find({ state: req.params.state });
     res.json(documents);
     return;
   } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Error fetching documents' });
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Error fetching documents" });
     return;
   }
 });
 
 // Express route to fetch dealer by a particular id
-app.get('/fetchDealer/:id', async (req, res) => {
+app.get("/fetchDealer/:id", async (req, res) => {
   try {
     const documents = await Dealerships.find({ id: req.params.id });
     res.json(documents);
     return;
   } catch (error) {
-    console.error('Error fetching documents:', error);
-    res.status(500).json({ error: 'Error fetching documents' });
+    console.error("Error fetching documents:", error);
+    res.status(500).json({ error: "Error fetching documents" });
     return;
   }
 });
 
 // Express route to insert review
-app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
+app.post("/insert_review', express.raw({ type: '*/*" }), async (req, res) => {
   let data;
   try {
     data = JSON.parse(req.body);
@@ -130,8 +130,8 @@ app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
     res.json(savedReview);
     return;
   } catch (error) {
-    console.error('Error inserting review:', error);
-    res.status(500).json({ error: 'Error inserting review' });
+    console.error("Error inserting review:", error);
+    res.status(500).json({ error: "Error inserting review" });
     return;
   }
 });
