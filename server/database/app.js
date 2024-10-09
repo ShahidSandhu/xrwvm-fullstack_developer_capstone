@@ -27,10 +27,10 @@ const Dealerships = require('./dealership');
 
 try {
   Reviews.deleteMany({}).then(() => {
-    Reviews.insertMany(reviews_data.reviews);
+    return Reviews.insertMany(reviews_data.reviews);
   });
   Dealerships.deleteMany({}).then(() => {
-    Dealerships.insertMany(dealerships_data.dealerships); // Corrected the typo
+    return Dealerships.insertMany(dealerships_data.dealerships); // Corrected the typo
   });
 } catch (error) {
   console.error('Error inserting initial data:', error);
@@ -38,7 +38,7 @@ try {
 
 // Express route to home
 app.get('/', (req, res) => {
-  res.send("Welcome to the Mongoose API");
+  res.send('Welcome to the Mongoose API');
 });
 
 // Express route to fetch all reviews
@@ -46,8 +46,11 @@ app.get('/fetchReviews', async (req, res) => {
   try {
     const documents = await Reviews.find();
     res.json(documents);
+    return; // Ensure no further code execution after response
   } catch (error) {
+    console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
+    return; // Ensure no further code execution after response
   }
 });
 
@@ -56,8 +59,11 @@ app.get('/fetchReviews/dealer/:id', async (req, res) => {
   try {
     const documents = await Reviews.find({ dealership: req.params.id });
     res.json(documents);
+    return; // Ensure no further code execution after response
   } catch (error) {
+    console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
+    return; // Ensure no further code execution after response
   }
 });
 
@@ -66,8 +72,11 @@ app.get('/fetchDealers', async (req, res) => {
   try {
     const documents = await Dealerships.find();
     res.json(documents);
+    return; // Ensure no further code execution after response
   } catch (error) {
+    console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
+    return; // Ensure no further code execution after response
   }
 });
 
@@ -76,8 +85,11 @@ app.get('/fetchDealers/:state', async (req, res) => {
   try {
     const documents = await Dealerships.find({ state: req.params.state });
     res.json(documents);
+    return; // Ensure no further code execution after response
   } catch (error) {
+    console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
+    return; // Ensure no further code execution after response
   }
 });
 
@@ -86,8 +98,11 @@ app.get('/fetchDealer/:id', async (req, res) => {
   try {
     const documents = await Dealerships.find({ id: req.params.id });
     res.json(documents);
+    return; // Ensure no further code execution after response
   } catch (error) {
+    console.error('Error fetching documents:', error);
     res.status(500).json({ error: 'Error fetching documents' });
+    return; // Ensure no further code execution after response
   }
 });
 
@@ -95,27 +110,29 @@ app.get('/fetchDealer/:id', async (req, res) => {
 app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
   let data;
   try {
-    data = JSON.parse(req.body); // Ensure that data is defined
+    data = JSON.parse(req.body);
     const documents = await Reviews.find().sort({ id: -1 });
-    let new_id = documents[0].id + 1;
+    const new_id = documents[0].id + 1;
 
     const review = new Reviews({
-      "id": new_id,
-      "name": data.name,
-      "dealership": data.dealership,
-      "review": data.review,
-      "purchase": data.purchase,
-      "purchase_date": data.purchase_date,
-      "car_make": data.car_make,
-      "car_model": data.car_model,
-      "car_year": data.car_year,
+      id: new_id,
+      name: data.name,
+      dealership: data.dealership,
+      review: data.review,
+      purchase: data.purchase,
+      purchase_date: data.purchase_date,
+      car_make: data.car_make,
+      car_model: data.car_model,
+      car_year: data.car_year,
     });
 
     const savedReview = await review.save();
     res.json(savedReview);
+    return; // Ensure no further code execution after response
   } catch (error) {
     console.error('Error inserting review:', error);
     res.status(500).json({ error: 'Error inserting review' });
+    return; // Ensure no further code execution after response
   }
 });
 
