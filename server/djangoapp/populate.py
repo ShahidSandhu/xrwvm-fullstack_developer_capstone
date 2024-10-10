@@ -1,6 +1,5 @@
 # pylint: skip-file
-ignore=<default list>,<extra error code to ignore>
-ignore=E121,E123,E126,E226,E24,E704,W503,E129,E501
+ignore=E501,W291,
 from .models import CarMake, CarModel
 
 
