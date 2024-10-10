@@ -1,5 +1,5 @@
 # pylint: skip-file
-ignore=<default list>,<E501,W291,>
+ignore=<default list>,<E501,W291,E999>
 from .models import CarMake, CarModel
 
 
