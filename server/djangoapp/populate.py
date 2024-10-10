@@ -20,6 +20,7 @@ def initiate():
 
     # pylint: disable=line-too-long
     car_model_data = [
+        # pylint: disable=line-too-long
         {"name": "Pathfinder", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
         {"name": "Qashqai", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
         {"name": "XTRAIL", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
