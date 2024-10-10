@@ -1,5 +1,4 @@
-# pylint: skip-file
-ignore=E501,W291,
+skip errors and warnings (e.g. E4,W) (default:E121,E123,E126,E226,E24,E704,W503)
 """djangoproj URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
