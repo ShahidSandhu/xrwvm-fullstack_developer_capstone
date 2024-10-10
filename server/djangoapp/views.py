@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+
 @csrf_exempt
 def login_user(request):
     """Handle user login."""
@@ -29,7 +30,7 @@ def login_user(request):
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
-    
+
     # Authenticate user
     user = authenticate(username=username, password=password)
     
@@ -43,7 +44,7 @@ def login_user(request):
         response_data = {
             "userName": username
         }
-    
+
     return JsonResponse(response_data)
 
 
@@ -70,7 +71,7 @@ def registration(request):
             "userName": username,
             "error": "Already Registered"
         })
-    
+
     # Create user if not already registered
     user = User.objects.create_user(
         username=username,
@@ -79,7 +80,7 @@ def registration(request):
         password=password,
         email=email,
     )
-    
+
     login(request, user)
     return JsonResponse({
         "userName": username,
@@ -102,7 +103,7 @@ def get_dealer_reviews(request, dealer_id):
         for review_detail in reviews:
             response = analyze_review_sentiments(review_detail['review'])
             review_detail['sentiment'] = response['sentiment']
-        
+
         return JsonResponse({"status": 200, "reviews": reviews})
 
     return JsonResponse({"status": 400, "message": "Bad Request"})
@@ -139,11 +140,11 @@ def get_cars(request):
     count = CarMake.objects.count()
     if count == 0:
         initiate()
-    
+
     car_models = CarModel.objects.select_related('car_make')
     cars = [
         {"CarModel": car_model.name, "CarMake": car_model.car_make.name}
         for car_model in car_models
     ]
-    
+
     return JsonResponse({"CarModels": cars})
