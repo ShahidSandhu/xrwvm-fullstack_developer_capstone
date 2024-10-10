@@ -1,4 +1,5 @@
 #pylint: disable=line-too-long
+--ignor=E501
 from .models import CarMake, CarModel
 
 
