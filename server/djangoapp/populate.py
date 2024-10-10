@@ -1,4 +1,4 @@
-disable= E501, W0511, C0321 # pylint: disable-all
+# pylint: disable=C0321, E501, W0511, C0321
 from .models import CarMake, CarModel
 
 
