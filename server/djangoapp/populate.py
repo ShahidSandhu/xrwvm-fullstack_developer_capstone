@@ -1,4 +1,5 @@
-# pylint:disable= (default:E121,E123,E126,E226,E24,E704,W503)
+# pylint: skip-file
+ignore=<default list>,<E501,W291,>
 from .models import CarMake, CarModel
 
 
