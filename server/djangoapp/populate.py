@@ -1,4 +1,4 @@
-# Pylint: disable = line-too-long, disable = C0321, E501, W0511, C0321
+# pylint: disable = line-too-long
 from .models import CarMake, CarModel
 
 
