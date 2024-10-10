@@ -1,4 +1,4 @@
-# --ignore=errors      skip errors and warnings (e.g. E4,W) (default:E121,E123,E126,E226,E24,E704,W503) # pylint: disable=line-too-long
+# --ignore=errors      skip errors and warnings (e.g. E4,W) (default:E121,E123,E126,E226,E24,E704,W503)     # pylint: disable=line-too-long
 from .models import CarMake, CarModel
 
 
@@ -20,12 +20,12 @@ def initiate():
 
     # pylint: disable=line-too-long
     car_model_data = [
-        {"name": "Pathfinder", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]}, # pylint: disable=line-too-long
-        {"name": "Qashqai", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]}, # pylint: disable=line-too-long
-        {"name": "XTRAIL", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]}, # pylint: disable=line-too-long
-        {"name": "A-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]}, # pylint: disable=line-too-long
-        {"name": "C-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]}, # pylint: disable=line-too-long
-        {"name": "E-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]}, # pylint: disable=line-too-long
+        {"name": "Pathfinder", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},  # pylint: disable=line-too-long
+        {"name": "Qashqai", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},  # pylint: disable=line-too-long
+        {"name": "XTRAIL", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},  # pylint: disable=line-too-long
+        {"name": "A-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},  # pylint: disable=line-too-long
+        {"name": "C-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},  # pylint: disable=line-too-long
+        {"name": "E-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},  # pylint: disable=line-too-long
         {"name": "A4", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
         {"name": "A5", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
         {"name": "A6", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
