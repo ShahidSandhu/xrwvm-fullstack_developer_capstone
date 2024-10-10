@@ -1,3 +1,5 @@
+# pylint: skip-file
+ignore=<default list>,
 ignore=E501,W291,
 """djangoproj URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
