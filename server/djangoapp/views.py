@@ -1,4 +1,3 @@
-# pylint:disable=W293
 # Uncomment the required imports before adding the code
 # from django.shortcuts import render
 # from django.http import HttpResponseRedirect, HttpResponse
@@ -33,7 +32,7 @@ def login_user(request):
 
     # Authenticate user
     user = authenticate(username=username, password=password)
-    
+
     if user is not None:
         login(request, user)
         response_data = {
