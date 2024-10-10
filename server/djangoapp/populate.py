@@ -1,4 +1,4 @@
-# pylint: disable = line-too-long
+# pylint: skip-file
 from .models import CarMake, CarModel
 
 
