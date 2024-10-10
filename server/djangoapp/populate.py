@@ -1,4 +1,4 @@
-ignore  skip errors and warnings (e.g. E4,W) (default:E121,E123,E126,E226,E24,E704,W503)
+# pylint: disable = line-too-long
 from .models import CarMake, CarModel
 
 
