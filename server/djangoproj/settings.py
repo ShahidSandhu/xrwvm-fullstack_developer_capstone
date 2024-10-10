@@ -1,3 +1,4 @@
+# pylint: disable = line-too-long
 """
 Django settings for djangoproj project.
 
